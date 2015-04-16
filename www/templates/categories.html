@@ -1,0 +1,17 @@
+<ion-view title="Categories">
+    <ion-content ng-controller="CatCtrl">
+        <ion-list>
+            <div ng-repeat="category in categories">
+                <ion-item class="item-stable" ng-click="toggleCategory(category)" ng-class="{active: isCategoryShown(category)}">
+                    <i class="icon" ng-class="isCategoryShown(category) ? 'ion-minus' : 'ion-plus'"></i>
+                    &nbsp;
+                    {{category.name}}
+                </ion-item>
+                <ion-item class="item-accordion" ng-repeat="subCat in category.subCats" ng-show="isCategoryShown(category)">
+                    <a class="item" ui-sref="subCatListing">
+                    {{subCat}}
+                    </a>
+                </ion-item>
+            </div>
+    </ion-content>
+</ion-view>
